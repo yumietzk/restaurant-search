@@ -1,0 +1,127 @@
+.header__logo {
+  // background-color: orchid;
+  flex: 0 0 20%;
+
+  &--1,
+  &--2 {
+    display: block;
+    color: var(--color-accent-1);
+    font-size: 6rem;
+    font-family: Pattaya, sans-serif;
+  }
+
+  &--1 {
+    text-align: left;
+    margin-left: 2rem;
+  }
+
+  &--2 {
+    text-align: right;
+    margin-right: -2rem;
+  }
+}
+
+.search {
+  // background-color: orangered;
+  flex: 1;
+  align-self: flex-end;
+  margin-bottom: 3rem;
+
+  display: flex;
+  justify-content: flex-end;
+  // margin-right: 2rem;
+
+  &__input {
+    font-size: 1rem;
+    font-family: inherit;
+    color: inherit;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    width: 30%;
+    margin-right: -4rem;
+    background-color: var(--color-gray-light-2);
+    transition: all 0.2s;
+
+    &::-webkit-input-placeholder {
+      font-weight: 300;
+      color: var(--color-gray-dark-2);
+    }
+
+    &:focus {
+      outline: none;
+      width: 40%;
+    }
+  }
+
+  &__btn {
+    border: none;
+    background-color: var(--color-gray-light-2);
+    transition: all 0.2s;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: var(--color-gray-dark-1);
+  }
+}
+
+.header__user-box {
+  // background-color: blue;
+  flex: 0 0 17rem;
+  align-self: flex-end;
+  margin-bottom: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-right: 2rem;
+
+  .bookmark {
+    &:link,
+    &:visited {
+      margin-right: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      .bookmark-icon {
+        transform: translateY(-2px) scale(1.2);
+        fill: var(--color-accent-3);
+      }
+    }
+
+    &:active {
+      .bookmark-icon {
+        transform: translateY(-1px) scale(1.1);
+        fill: var(--color-accent-3);
+      }
+    }
+
+    .bookmark-icon {
+      height: 3rem;
+      width: 3rem;
+      fill: var(--color-gray-light-2);
+      transition: all 0.2s;
+    }
+  }
+
+  .user {
+    &__icon {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+    }
+  }
+}

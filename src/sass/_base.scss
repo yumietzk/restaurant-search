@@ -1,0 +1,33 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Lato, sans-serif;
+  font-weight: 300;
+  color: var(--font-color);
+  // background-color: var(--color-pink);
+  // padding: 1.5rem;
+}
+
+.container {
+  // max-width: 114rem;
+  min-height: 100vh;
+  // border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
+  position: relative;
+
+  display: grid;
+  grid-template-rows: 25rem 7rem 1fr 7rem;
+  grid-template-columns: repeat(5, 1fr);
+}

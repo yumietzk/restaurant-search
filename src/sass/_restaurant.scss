@@ -1,0 +1,173 @@
+.restaurant {
+  &__link {
+    &:link,
+    &:visited {
+      color: var(--font-color);
+      text-decoration: none;
+      overflow: hidden;
+      transition: all 0.2s;
+      background-color: var(--color-orange-light-1);
+      border-radius: 3px;
+
+      display: flex;
+      align-items: center;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: var(--color-orange-light-2);
+      color: var(--font-color-2);
+
+      .place-icon,
+      .rating-icon {
+        fill: var(--font-color-2);
+      }
+
+      .bookmark-icon {
+        opacity: 1;
+        transition: all 0.2s;
+
+        &:hover {
+          fill: var(--color-gray-dark-1);
+        }
+
+        &:active {
+          transform: translateY(2px);
+        }
+      }
+    }
+
+    &:hover &__place-icon {
+      fill: var(--font-color-2);
+    }
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 2rem;
+  }
+
+  &__hero {
+    flex: 0 1 30%;
+    height: 13rem;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // Before the img was kinda blur, so I added this.
+    object-fit: cover;
+  }
+
+  &__description {
+    flex: 1;
+    margin-left: 3rem;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  &__place,
+  &__rating {
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: 1.5rem;
+      margin-left: 0.5rem;
+    }
+  }
+
+  &__place {
+    margin-bottom: 0.7rem;
+  }
+
+  .place-icon,
+  .rating-icon {
+    height: 2rem;
+    width: 2rem;
+    fill: var(--font-color);
+  }
+
+  &__bookmark {
+    flex: 0 1 3rem;
+    margin-right: 2rem;
+    align-self: flex-start;
+    margin-top: 2rem;
+
+    .bookmark-icon {
+      opacity: 0;
+      height: 3rem;
+      width: 3rem;
+      fill: var(--color-gray-dark-3);
+    }
+  }
+}
+
+.pagination-btn {
+  &:link,
+  &:visited {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    transform: translateY(-50%) scale(1.2);
+
+    .pagination-icon {
+      fill: var(--color-gray-dark-1);
+    }
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  &__front:link,
+  &__front:visited {
+    left: -7rem;
+  }
+
+  &__next:link,
+  &__next:visited {
+    right: -7rem;
+  }
+
+  .pagination-icon {
+    height: 3rem;
+    width: 3rem;
+    fill: var(--color-gray-dark-2);
+  }
+}
+
+.spinner {
+  margin: 5rem auto;
+  text-align: center;
+
+  .spinner-icon {
+    height: 3rem;
+    width: 3rem;
+    fill: var(--font-color);
+    animation: spin 0.8s infinite linear;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: none;
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

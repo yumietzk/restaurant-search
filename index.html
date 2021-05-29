@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300&family=Pattaya&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="src/sass/main.scss" />
+
+    <!-- Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
+    <script defer src="./src/js/controller.js"></script>
+    <title>Restaurant Search</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="header__logo">
+          <span class="header__logo--1">Restaurant</span>
+          <span class="header__logo--2">Search</span>
+        </div>
+        <form action="#" class="search">
+          <input
+            type="text"
+            class="search__input"
+            placeholder="Search restaurants..."
+          />
+          <button class="search__btn">
+            <svg class="search__icon">
+              <use
+                xlink:href="./src/img/sprite.svg#icon-magnifying-glass"
+              ></use>
+            </svg>
+          </button>
+        </form>
+        <div class="header__user-box">
+          <a href="#" class="bookmark">
+            <svg class="bookmark-icon">
+              <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+            </svg>
+          </a>
+          <div class="user">
+            <img src="./src/img/user-1.jpg" alt="User 1" class="user__icon" />
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <ul class="search-results">
+          <!-- <div class="search-message">
+            Search what you are craving for 😋
+          </div> -->
+
+          <!-- <div class="spinner">
+            <svg class="spinner-icon">
+              <use xlink:href="./src/img/sprite.svg#icon-spinner3"></use>
+            </svg>
+          </div> -->
+
+          <!-- <div class="error">
+            <div>
+              <svg class="error-icon">
+                <use xlink:href="./src/img/sprite.svg#icon-spinner3"></use>
+              </svg>
+            </div>
+            <p>No restaurants found. Please try again!</p>
+          </div> -->
+
+          <!-- <li class="restaurant">
+            <a href="#" class="restaurant__link">
+              <figure class="restaurant__hero">
+                <img
+                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                  alt=""
+                  class="restaurant__img"
+                />
+              </figure>
+              <div class="restaurant__description">
+                <div class="restaurant__name">TEST 1</div>
+                <div class="restaurant__place">
+                  <svg class="place-icon">
+                    <use
+                      xlink:href="./src/img/sprite.svg#icon-location-pin"
+                    ></use>
+                  </svg>
+                  <span>test road 1234</span>
+                </div>
+                <div class="restaurant__rating">
+                  <svg class="rating-icon">
+                    <use xlink:href="./src/img/sprite.svg#icon-star"></use>
+                  </svg>
+                  <span>4.5</span>
+                </div>
+              </div>
+              <div class="restaurant__bookmark">
+                <svg class="bookmark-icon">
+                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li class="restaurant restaurant-2">
+            <a href="#" class="restaurant__link">
+              <figure class="restaurant__hero">
+                <img
+                  src="https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                  alt=""
+                  class="restaurant__img"
+                />
+              </figure>
+              <div class="restaurant__description">
+                <div class="restaurant__name">TEST 1</div>
+                <div class="restaurant__place">
+                  <svg class="place-icon">
+                    <use
+                      xlink:href="./src/img/sprite.svg#icon-location-pin"
+                    ></use>
+                  </svg>
+                  <span>test road 1234</span>
+                </div>
+                <div class="restaurant__rating">
+                  <svg class="rating-icon">
+                    <use xlink:href="./src/img/sprite.svg#icon-star"></use>
+                  </svg>
+                  <span>4.5</span>
+                </div>
+              </div>
+              <div class="restaurant__bookmark">
+                <svg class="bookmark-icon">
+                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li class="restaurant restaurant-3">
+            <a href="#" class="restaurant__link">
+              <figure class="restaurant__hero">
+                <img
+                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                  alt=""
+                  class="restaurant__img"
+                />
+              </figure>
+              <div class="restaurant__description">
+                <div class="restaurant__name">TEST 1</div>
+                <div class="restaurant__place">
+                  <svg class="place-icon">
+                    <use
+                      xlink:href="./src/img/sprite.svg#icon-location-pin"
+                    ></use>
+                  </svg>
+                  <span>test road 1234</span>
+                </div>
+                <div class="restaurant__rating">
+                  <svg class="rating-icon">
+                    <use xlink:href="./src/img/sprite.svg#icon-star"></use>
+                  </svg>
+                  <span>4.5</span>
+                </div>
+              </div>
+              <div class="restaurant__bookmark">
+                <svg class="bookmark-icon">
+                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li class="restaurant restaurant-4">
+            <a href="#" class="restaurant__link">
+              <figure class="restaurant__hero">
+                <img
+                  src="https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                  alt=""
+                  class="restaurant__img"
+                />
+              </figure>
+              <div class="restaurant__description">
+                <div class="restaurant__name">TEST 1</div>
+                <div class="restaurant__place">
+                  <svg class="place-icon">
+                    <use
+                      xlink:href="./src/img/sprite.svg#icon-location-pin"
+                    ></use>
+                  </svg>
+                  <span>test road 1234</span>
+                </div>
+                <div class="restaurant__rating">
+                  <svg class="rating-icon">
+                    <use xlink:href="./src/img/sprite.svg#icon-star"></use>
+                  </svg>
+                  <span>4.5</span>
+                </div>
+              </div>
+              <div class="restaurant__bookmark">
+                <svg class="bookmark-icon">
+                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li class="restaurant restaurant-5">
+            <a href="#" class="restaurant__link">
+              <figure class="restaurant__hero">
+                <img
+                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                  alt=""
+                  class="restaurant__img"
+                />
+              </figure>
+              <div class="restaurant__description">
+                <div class="restaurant__name">TEST 1</div>
+                <div class="restaurant__place">
+                  <svg class="place-icon">
+                    <use
+                      xlink:href="./src/img/sprite.svg#icon-location-pin"
+                    ></use>
+                  </svg>
+                  <span>test road 1234</span>
+                </div>
+                <div class="restaurant__rating">
+                  <svg class="rating-icon">
+                    <use xlink:href="./src/img/sprite.svg#icon-star"></use>
+                  </svg>
+                  <span>4.5</span>
+                </div>
+              </div>
+              <div class="restaurant__bookmark">
+                <svg class="bookmark-icon">
+                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                </svg>
+              </div>
+            </a>
+          </li> -->
+        </ul>
+
+        <!-- Hide first, and after searhcing something, remove a hidden class -->
+        <a href="#" class="pagination-btn pagination-btn__front">
+          <svg class="pagination-icon">
+            <use xlink:href="./src/img/sprite.svg#icon-chevron-thin-left"></use>
+          </svg>
+        </a>
+        <a href="#" class="pagination-btn pagination-btn__next">
+          <svg class="pagination-icon">
+            <use
+              xlink:href="./src/img/sprite.svg#icon-chevron-thin-right"
+            ></use>
+          </svg>
+        </a>
+      </div>
+
+      <div class="restaurant-details hidden">
+        <div class="restaurant-detail">
+          <!-- Might be able to render 3 imgs that was done in a header on Natour project -->
+          <figure class="detail__fig">
+            <img
+              src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHJlc3RhdXJhbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+              alt="restaurant"
+              class="detail__img"
+            />
+          </figure>
+          <div class="detail__title">
+            <h3 class="name">Restaurant Pizza</h3>
+            <div class="category">pizza</div>
+          </div>
+          <div class="detail__address">
+            <svg class="address-icon">
+              <use xlink:href="./src/img/sprite.svg#icon-location-pin"></use>
+            </svg>
+            <span>address 1234</span>
+          </div>
+          <div class="detail__openingHour">
+            <svg class="openingHour-icon">
+              <use xlink:href="./src/img/sprite.svg#icon-clock"></use>
+            </svg>
+            <span>13:00-23:00</span>
+          </div>
+          <div class="detail__phone">
+            <svg class="phone-icon">
+              <use xlink:href="./src/img/sprite.svg#icon-phone"></use>
+            </svg>
+            <span>+1 647-347-1168</span>
+          </div>
+          <div class="detail__rating">
+            <svg class="rating-icon">
+              <use xlink:href="./src/img/sprite.svg#icon-star"></use>
+            </svg>
+            <span>4.5</span>
+          </div>
+
+          <div class="detail__review">
+            <div class="user-review">
+              My very first time trying deep dish pizza and I'm glad I did! We
+              ordered the small sized "Truff-ghi" pizza which has: cheese blend,
+              slow-roasted garlic... My very first time trying deep dish pizza
+              and I'm glad I did! My very first time trying deep dish pizza and
+              I'm glad I did!
+            </div>
+            <div class="user">
+              <img
+                src="./src/img/review-user.jpg"
+                alt="review user"
+                class="user-img"
+              />
+              <div class="user-detail">
+                <div class="user-name">Angela Y.</div>
+                <div class="user-date">2021-03-16</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="map"></div>
+        <a href="#" class="detail__btn">
+          <svg class="close-icon">
+            <use xlink:href="./src/img/sprite.svg#icon-cross"></use>
+          </svg>
+        </a>
+      </div>
+
+      <div class="overlay hidden"></div>
+    </div>
+  </body>
+</html>
