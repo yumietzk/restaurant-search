@@ -2,52 +2,70 @@ import icons from '../../img/sprite.svg';
 
 class ResultsView {
   _parentEl = document.querySelector('.search-results');
+  _errorMessage = 'Please search again!';
   _data;
 
-  renderResults() {
-    this._parentEl.innerHTML = '';
+  renderResults(data) {
+    // document.querySelector('.search-message').classList.add('hidden');
 
     // data = state.search.businesses = [{...}, ]
     this._data = data;
-    const markup = this._data.map((business) => this.generateMarkup()).join('');
+    // console.log(this._data);
+    const markup = this._data
+      .map((business) => this.generateMarkup(business))
+      .join('');
+
+    this._parentEl.innerHTML = '';
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
   }
 
-  generateMarkup() {
+  generateMarkup(data) {
     return `
       <li class="restaurant">
-        <a href="#" class="restaurant__link">
+        <a href="#${data.id}" class="restaurant__link">
           <figure class="restaurant__hero">
             <img
-              src=${this._data.imageURL}
+              src=${data.image}
               alt=""
               class="restaurant__img"
             />
           </figure>
           <div class="restaurant__description">
-            <div class="restaurant__name">${this._data.name}</div>
+            <div class="restaurant__name">${data.name}</div>
             <div class="restaurant__place">
               <svg class="place-icon">
                 <use
                   xlink:href="${icons}#icon-location-pin"
                 ></use>
               </svg>
-              <span>${this._data.location}</span>
+              <span>${data.location}</span>
             </div>
             <div class="restaurant__rating">
               <svg class="rating-icon">
                 <use xlink:href="${icons}#icon-star"></use>
               </svg>
-              <span>${this._data.rating}</span>
+              <span>${data.rating}</span>
             </div>
-          </div>
-          <div class="restaurant__bookmark">
-            <svg class="bookmark-icon">
-              <use xlink:href="${icons}#icon-bookmark"></use>
-            </svg>
           </div>
         </a>
       </li>
+    `;
+  }
+
+  renderPageBottom(page, allPage) {
+    const markup = this.generatePageMarkup(page, allPage);
+
+    this._parentEl.nextElementSibling.innerHTML = '';
+    this._parentEl.nextElementSibling.insertAdjacentHTML('afterbegin', markup);
+    // document.querySelector('.page').innerHTML = '';
+    // document.querySelector('.page').insertAdjacentHTML('afterbegin', markup);
+  }
+
+  generatePageMarkup(page, allPage) {
+    return `
+      <span class="num-1">${page}</span>
+      &#8260;
+      <span class="num-2">${allPage}</span>
     `;
   }
 
@@ -55,12 +73,30 @@ class ResultsView {
     const markup = `
         <div class="spinner">
           <svg class="spinner-icon">
-            <use xlink:href="./src/img/sprite.svg#icon-spinner3"></use>
+            <use xlink:href="${icons}#icon-spinner3"></use>
           </svg>
         </div>
       `;
 
     this._parentEl.innerHTML = '';
+    document.querySelector('.page').innerHTML = '';
+    document.querySelector('.pagination').innerHTML = '';
+    this._parentEl.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  renderError(message = this._errorMessage) {
+    const markup = `
+        <div class="error">
+          <div>
+            <svg class="error-icon">
+              <use xlink:href="${icons}#icon-warning"></use>
+            </svg>
+          </div>
+          <p>${message}</p>
+        </div>
+      `;
+    this._parentEl.innerHTML = '';
+    document.querySelector('.pagination').innerHTML = '';
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
   }
 }

@@ -94,32 +94,43 @@
     width: 2rem;
     fill: var(--font-color);
   }
+}
 
-  &__bookmark {
-    flex: 0 1 3rem;
-    margin-right: 2rem;
-    align-self: flex-start;
-    margin-top: 2rem;
+.page {
+  position: absolute;
+  bottom: -5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  // height: 3.5rem;
+  // width: 3.5rem;
+  // color: var(--color-accent-3);
+  // border-radius: 50%;
+  text-align: center;
+  line-height: 3.5rem;
+  font-size: 1.3rem;
+  font-weight: 400;
 
-    .bookmark-icon {
-      opacity: 0;
-      height: 3rem;
-      width: 3rem;
-      fill: var(--color-gray-dark-3);
-    }
+  .num-1 {
+    margin-right: 2px;
+  }
+
+  .num-2 {
+    margin-left: 2px;
+    font-size: 1.5rem;
+    vertical-align: bottom;
   }
 }
 
+// Pagination button
 .pagination-btn {
-  &:link,
-  &:visited {
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
+  border: none;
+  background-color: transparent;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 0.2s;
 
   &:hover {
     transform: translateY(-50%) scale(1.2);
@@ -133,13 +144,11 @@
     transform: translateY(-50%) scale(1.1);
   }
 
-  &__front:link,
-  &__front:visited {
+  &__front {
     left: -7rem;
   }
 
-  &__next:link,
-  &__next:visited {
+  &__next {
     right: -7rem;
   }
 

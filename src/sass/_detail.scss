@@ -53,6 +53,26 @@
         font-weight: 400;
       }
 
+      .bookmark {
+        padding-top: 3px;
+        border: none;
+        background-color: transparent;
+
+        .bookmark-icon {
+          height: 2.5rem;
+          width: 2.5rem;
+          fill: var(--color-gray-dark-3);
+        }
+
+        &:hover {
+          .bookmark-icon {
+            transition: all 0.2s;
+            fill: var(--color-gray-dark-1);
+            transform: scale(1.1);
+          }
+        }
+      }
+
       .category {
         background-color: var(--color-accent-3);
         padding: 0.5rem 1rem;
@@ -61,7 +81,7 @@
         font-style: italic;
         color: var(--color-white);
 
-        align-self: flex-end;
+        // align-self: flex-end;
         // display: flex;
         // justify-content: center;
         // align-items: center;
@@ -113,6 +133,7 @@
           height: 5.8rem;
           width: 5.8rem;
           border-radius: 50%;
+          object-fit: cover;
         }
 
         &-detail {
@@ -136,7 +157,7 @@
     .rating-icon {
       height: 2.5rem;
       width: 2.5rem;
-      fill: var(--font-color-2);
+      fill: var(--color-accent-3);
     }
   }
 
@@ -152,8 +173,8 @@
     &:link,
     &:visited {
       position: absolute;
-      top: -5rem;
-      right: -5rem;
+      top: -4rem;
+      right: -4rem;
     }
 
     .close-icon {

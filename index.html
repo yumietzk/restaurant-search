@@ -65,9 +65,7 @@
 
       <div class="content">
         <ul class="search-results">
-          <!-- <div class="search-message">
-            Search what you are craving for 😋
-          </div> -->
+          <!-- <h2 class="search-message">Search what you are craving for 😋</h2> -->
 
           <!-- <div class="spinner">
             <svg class="spinner-icon">
@@ -110,11 +108,6 @@
                   <span>4.5</span>
                 </div>
               </div>
-              <div class="restaurant__bookmark">
-                <svg class="bookmark-icon">
-                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
-                </svg>
-              </div>
             </a>
           </li>
           <li class="restaurant restaurant-2">
@@ -142,11 +135,6 @@
                   </svg>
                   <span>4.5</span>
                 </div>
-              </div>
-              <div class="restaurant__bookmark">
-                <svg class="bookmark-icon">
-                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
-                </svg>
               </div>
             </a>
           </li>
@@ -176,11 +164,6 @@
                   <span>4.5</span>
                 </div>
               </div>
-              <div class="restaurant__bookmark">
-                <svg class="bookmark-icon">
-                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
-                </svg>
-              </div>
             </a>
           </li>
           <li class="restaurant restaurant-4">
@@ -208,11 +191,6 @@
                   </svg>
                   <span>4.5</span>
                 </div>
-              </div>
-              <div class="restaurant__bookmark">
-                <svg class="bookmark-icon">
-                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
-                </svg>
               </div>
             </a>
           </li>
@@ -242,34 +220,67 @@
                   <span>4.5</span>
                 </div>
               </div>
-              <div class="restaurant__bookmark">
-                <svg class="bookmark-icon">
-                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
-                </svg>
-              </div>
             </a>
           </li> -->
         </ul>
 
-        <!-- Hide first, and after searhcing something, remove a hidden class -->
-        <a href="#" class="pagination-btn pagination-btn__front">
-          <svg class="pagination-icon">
-            <use xlink:href="./src/img/sprite.svg#icon-chevron-thin-left"></use>
-          </svg>
-        </a>
-        <a href="#" class="pagination-btn pagination-btn__next">
-          <svg class="pagination-icon">
-            <use
-              xlink:href="./src/img/sprite.svg#icon-chevron-thin-right"
-            ></use>
-          </svg>
-        </a>
+        <div class="page">
+          <!-- <span class="num-1">4</span>
+          &#8260;
+          <span class="num-2">10</span> -->
+        </div>
+
+        <div class="pagination">
+          <!-- <button class="pagination-btn pagination-btn__front">
+            <svg class="pagination-icon">
+              <use
+                xlink:href="./src/img/sprite.svg#icon-chevron-thin-left"
+              ></use>
+            </svg>
+          </button>
+          <button class="pagination-btn pagination-btn__next">
+            <svg class="pagination-icon">
+              <use
+                xlink:href="./src/img/sprite.svg#icon-chevron-thin-right"
+              ></use>
+            </svg>
+          </button> -->
+        </div>
+      </div>
+
+      <div class="bookmarks">
+        <ul class="bookmarks__restaurant">
+          <li class="bookmarks__list">
+            <a href="#" class="bookmarks__link">
+              <figure class="bookmarks__hero">
+                <img
+                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                  alt=""
+                  class="bookmarks__img"
+                />
+              </figure>
+              <div class="bookmarks__name">TEST</div>
+            </a>
+          </li>
+          <li class="">
+            <a href="#" class="bookmarks__link">
+              <figure class="bookmarks__hero">
+                <img
+                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                  alt=""
+                  class="bookmarks__img"
+                />
+              </figure>
+              <div class="bookmarks__name">TEST</div>
+            </a>
+          </li>
+        </ul>
       </div>
 
       <div class="restaurant-details hidden">
         <div class="restaurant-detail">
           <!-- Might be able to render 3 imgs that was done in a header on Natour project -->
-          <figure class="detail__fig">
+          <!-- <figure class="detail__fig">
             <img
               src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHJlc3RhdXJhbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
               alt="restaurant"
@@ -278,6 +289,11 @@
           </figure>
           <div class="detail__title">
             <h3 class="name">Restaurant Pizza</h3>
+            <button class="bookmark">
+              <svg class="bookmark-icon">
+                <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+              </svg>
+            </button>
             <div class="category">pizza</div>
           </div>
           <div class="detail__address">
@@ -324,16 +340,18 @@
                 <div class="user-date">2021-03-16</div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div id="map"></div>
+        <!-- Change to button element -->
         <a href="#" class="detail__btn">
           <svg class="close-icon">
             <use xlink:href="./src/img/sprite.svg#icon-cross"></use>
           </svg>
         </a>
       </div>
+      <!-- Try to fix the detail display by using background: fix or something -->
 
       <div class="overlay hidden"></div>
     </div>
