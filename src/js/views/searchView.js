@@ -5,9 +5,7 @@ class SearchView {
   getQuery() {
     const query = this._parentEl.querySelector('.search__input').value;
     this.clearInput();
-    ////
-    // Check if data is valid
-    ////
+
     return query;
   }
 

@@ -1,12 +1,14 @@
 import { async } from 'regenerator-runtime'; // this was supposed to be created automatically by Parcel, but it wasn't, so I did.
-import { API_KEY } from './config.js';
+// import { API_KEY } from './config.js';
 
-// const key = API_KEY;
+const key = process.env.API_KEY;
+
+require('dotenv').config();
 
 const requestOptions = {
   method: 'GET',
   headers: {
-    Authorization: `Bearer ${API_KEY}`,
+    Authorization: `Bearer ${key}`,
     // 'Content-Type': 'application/json',
   },
 };
@@ -22,7 +24,7 @@ export const AJAX = async function (url) {
     if (!res.ok) throw new Error('Please search again!');
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (err) {
     console.error(`💥💥💥 ${err}`);

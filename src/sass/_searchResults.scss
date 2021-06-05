@@ -7,10 +7,20 @@
       overflow: hidden;
       transition: all 0.2s;
       background-color: var(--color-orange-light-1);
-      border-radius: 3px;
+      border-radius: 1rem;
 
       display: flex;
       align-items: center;
+
+      @media only screen and (max-width: $bp-small) {
+        border-radius: 2rem;
+      }
+
+      @media only screen and (max-width: $bp-smallest) {
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
+      }
     }
 
     &:hover {
@@ -23,18 +33,18 @@
         fill: var(--font-color-2);
       }
 
-      .bookmark-icon {
-        opacity: 1;
-        transition: all 0.2s;
+      // .bookmarked-icon {
+      //   opacity: 1;
+      //   transition: all 0.2s;
 
-        &:hover {
-          fill: var(--color-gray-dark-1);
-        }
+      //   &:hover {
+      //     fill: var(--color-gray-dark-1);
+      //   }
 
-        &:active {
-          transform: translateY(2px);
-        }
-      }
+      //   &:active {
+      //     transform: translateY(2px);
+      //   }
+      // }
     }
 
     &:hover &__place-icon {
@@ -44,11 +54,33 @@
 
   &:not(:last-of-type) {
     margin-bottom: 2rem;
+
+    @media only screen and (max-width: $bp-smallest) {
+      margin-bottom: 2.5rem;
+    }
   }
 
   &__hero {
     flex: 0 1 30%;
-    height: 13rem;
+    height: 17rem;
+
+    @media only screen and (max-width: $bp-largest) {
+      height: 13rem;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      flex: 0 1 40%;
+      height: 11rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      border-radius: 2rem;
+      overflow: hidden;
+    }
+
+    // @media only screen and (max-width: $bp-smallest) {
+    //   height: 5rem;
+    // }
   }
 
   &__img {
@@ -57,6 +89,10 @@
     height: 100%;
     // Before the img was kinda blur, so I added this.
     object-fit: cover;
+
+    @media only screen and (max-width: $bp-smallest) {
+      height: 18rem;
+    }
   }
 
   &__description {
@@ -65,12 +101,26 @@
 
     display: flex;
     flex-direction: column;
+
+    @media only screen and (max-width: $bp-smallest) {
+      margin-left: 0;
+      align-self: center;
+      padding: 1rem 0;
+    }
   }
 
   &__name {
     margin-bottom: 1.5rem;
     font-size: 2rem;
     font-weight: 400;
+
+    @media only screen and (max-width: $bp-medium) {
+      font-size: 1.7rem;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 1.6rem;
+    }
   }
 
   &__place,
@@ -81,6 +131,14 @@
     span {
       font-size: 1.5rem;
       margin-left: 0.5rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        font-size: 1.3rem;
+      }
+
+      @media only screen and (max-width: $bp-smallest) {
+        font-size: 1.2rem;
+      }
     }
   }
 
@@ -93,7 +151,30 @@
     height: 2rem;
     width: 2rem;
     fill: var(--font-color);
+
+    @media only screen and (max-width: $bp-smallest) {
+      height: 1.8rem;
+      width: 1.8rem;
+    }
   }
+
+  // &__bookmark {
+  //   flex: 0 0 5rem;
+  //   align-self: flex-start;
+  //   margin-top: 2rem;
+
+  //   .bookmarked-icon {
+  //     height: 3rem;
+  //     width: 3rem;
+  //     fill: var(--color-gray-dark-3);
+  //     opacity: 0;
+  //   }
+
+  //   .bookmarked-icon.checked {
+  //     opacity: 1;
+  //     fill: var(--color-gray-dark-1);
+  //   }
+  // }
 }
 
 .page {
@@ -132,6 +213,10 @@
   cursor: pointer;
   transition: all 0.2s;
 
+  @media only screen and (max-width: $bp-smallest) {
+    top: 101%;
+  }
+
   &:hover {
     transform: translateY(-50%) scale(1.2);
 
@@ -145,17 +230,30 @@
   }
 
   &__front {
-    left: -7rem;
+    left: -10rem;
+
+    @media only screen and (max-width: $bp-smallest) {
+      left: -5rem;
+    }
   }
 
   &__next {
-    right: -7rem;
+    right: -10rem;
+
+    @media only screen and (max-width: $bp-smallest) {
+      right: -5rem;
+    }
   }
 
   .pagination-icon {
     height: 3rem;
     width: 3rem;
     fill: var(--color-gray-dark-2);
+
+    @media only screen and (max-width: $bp-smallest) {
+      height: 2rem;
+      width: 2rem;
+    }
   }
 }
 
@@ -178,5 +276,20 @@
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.message,
+.errmessage {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+
+  .message-icon,
+  .error-icon {
+    height: 3rem;
+    width: 3rem;
+    fill: var(--color-accent-3);
+    margin-right: 1rem;
   }
 }

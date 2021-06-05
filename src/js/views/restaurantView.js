@@ -1,27 +1,57 @@
 import icons from '../../img/sprite.svg';
 
+require('dotenv').config();
+
+const accessToken = process.env.ACCESS_TOKEN;
+
 class RestaurantView {
   _parentEl = document.querySelector('.restaurant-detail');
   _data;
+  map;
 
   addHandlerRestaurant(handler) {
+    // ['hashchange', 'load'].forEach((ev) => {
+    //   window.addEventListener(ev, function () {
+    //     const id = window.location.hash;
+    //     // console.log(id);
+    //     // console.log(id.slice(1));
+
+    //     // To avoid when clicked a close button on detail
+    //     if (!id.slice(1)) return;
+    //     handler();
+    //   });
+    // });
     window.addEventListener('hashchange', function () {
       const id = window.location.hash;
       // console.log(id);
-      console.log(id.slice(1));
+      // console.log(id.slice(1));
+
+      // To avoid when clicked a close button on detail
+      if (!id.slice(1)) return;
       handler();
     });
   }
 
-  addHandlerAddBookmark(handler) {
+  addHandlerAddBookmarks(handler) {
     this._parentEl.addEventListener('click', function (e) {
-      if (!e.target.closest('.bookmark-icon')) return;
+      if (!e.target.closest('.detail__bookmark-icon')) return;
+      // console.log(e.target);
       handler();
     });
   }
 
-  renderBookmark() {
-    e.target.style.fill = 'var(--color-gray-dark-1)';
+  addHandlerClose(handler) {
+    document
+      .querySelector('.detail__btn')
+      .addEventListener('click', function () {
+        handler();
+      });
+  }
+
+  renderBookmarked() {
+    this._parentEl
+      .querySelector('.detail__bookmark-icon')
+      .classList.toggle('bookmarked');
   }
 
   removeHiddenClass() {
@@ -39,8 +69,10 @@ class RestaurantView {
   renderMap(lat, long) {
     // Render the map based on the tiles <- This happens after choosing a restaurant.
 
+    if (this.map) this.map.remove();
+
     const coords = [lat, long];
-    const map = L.map('map').setView(coords, 13);
+    this.map = L.map('map').setView(coords, 13);
 
     L.tileLayer(
       'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
@@ -51,18 +83,17 @@ class RestaurantView {
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken:
-          'pk.eyJ1IjoieXQyOSIsImEiOiJja3A3MGF1OHkwdjcxMzV0OGp0Y2lxcDVlIn0.ReMJFHd2iJAVf_4YarMAIQ',
+        accessToken: accessToken,
       }
-    ).addTo(map);
+    ).addTo(this.map);
 
     // Add marker
-    let marker = L.marker(coords).addTo(map);
+    let marker = L.marker(coords).addTo(this.map);
     marker.bindPopup('Here!').openPopup();
   }
 
   renderDetail(data) {
-    this._data = data; // state
+    this._data = data; // {}
     const markup = this.generateMarkup(this._data);
 
     this._parentEl.innerHTML = '';
@@ -73,43 +104,45 @@ class RestaurantView {
     return `
         <figure class="detail__fig">
           <img
-            src="${data.restaurant.image}"
-            alt="restaurant"
+            src="${data.image}"
+            alt="Restaurant Image"
             class="detail__img"
           />
         </figure>
         <div class="detail__title">
-          <h3 class="name">${data.restaurant.name}</h3>
-          <button class="bookmark">
-              <svg class="bookmark-icon">
+          <h3 class="name">${data.name}</h3>
+          <button class="detail__bookmark">
+              <svg class="detail__bookmark-icon">
                 <use xlink:href="${icons}#icon-bookmark"></use>
               </svg>
             </button>
-          <div class="category">${data.restaurant.category}</div>
+          <div class="category">${data.category}</div>
         </div>
         <div class="detail__address">
           <svg class="address-icon">
             <use xlink:href="${icons}#icon-location-pin"></use>
           </svg>
-          <span>${data.restaurant.address}</span>
+          <span>${data.address}</span>
         </div>
         <div class="detail__openingHour">
           <svg class="openingHour-icon">
             <use xlink:href="${icons}#icon-clock"></use>
           </svg>
-          <span>${data.restaurant.openingHours.join(' ~ ')}</span>
+          <span>${
+            data.openingHours ? data.openingHours.join(' ~ ') : '-'
+          }</span>
         </div>
         <div class="detail__phone">
           <svg class="phone-icon">
             <use xlink:href="${icons}#icon-phone"></use>
           </svg>
-          <span>${data.restaurant.phone}</span>
+          <span>${data.phone}</span>
         </div>
         <div class="detail__rating">
           <svg class="rating-icon">
             <use xlink:href="${icons}#icon-star"></use>
           </svg>
-          <span>${data.restaurant.rating}</span>
+          <span>${data.rating}</span>
         </div>
         <div class="detail__review">
           <div class="user-review">
@@ -118,7 +151,7 @@ class RestaurantView {
           <div class="user">
             <img
               src="${data.review.image}"
-              alt="review user"
+              alt="User image"
               class="user-img"
             />
             <div class="user-detail">
@@ -131,10 +164,6 @@ class RestaurantView {
           </div> 
         </div>
       `;
-  }
-
-  addHandlerClose(handler) {
-    document.querySelector('.detail__btn').addEventListener('click', handler);
   }
 }
 

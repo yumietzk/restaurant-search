@@ -6,6 +6,7 @@
 
   --color-orange-light-1: #fcf5ed;
   --color-orange-light-2: #f0cca4;
+  --color-orange-light-3: #f5dcc1;
 
   --color-accent-1: #f1a359;
   --color-accent-2: #f09a49;
@@ -23,3 +24,23 @@
   --font-color: #42484d;
   --font-color-2: #2d3439;
 }
+
+// 1200px / 16px = 75
+$bp-largest: 75em;
+// 1100px
+// $bp-large: 68.75em;
+// 900px
+// $bp-medium: 56.25em;
+// 600px
+// $bp-small: 37.5em;
+// 500px
+// $bp-smallest: 31.25em;
+
+// 1000px
+$bp-large: 62.5em;
+// 700px
+$bp-medium: 43.75em;
+// 600px
+$bp-small: 37.5em;
+// 500px
+$bp-smallest: 31.25em;

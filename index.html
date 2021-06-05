@@ -52,20 +52,30 @@
           </button>
         </form>
         <div class="header__user-box">
-          <a href="#" class="bookmark">
+          <button class="bookmark">
             <svg class="bookmark-icon">
               <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
             </svg>
-          </a>
-          <div class="user">
+          </button>
+          <!-- <div class="user">
             <img src="./src/img/user-1.jpg" alt="User 1" class="user__icon" />
-          </div>
+          </div> -->
         </div>
       </header>
 
       <div class="content">
         <ul class="search-results">
-          <!-- <h2 class="search-message">Search what you are craving for 😋</h2> -->
+          <div class="message">
+            <div>
+              <svg class="message-icon">
+                <use xlink:href="./src/img/sprite.svg#icon-spoon-knife"></use>
+              </svg>
+            </div>
+            <p>
+              Search what you want to eat, and find out your favourite
+              restaurant near you!
+            </p>
+          </div>
 
           <!-- <div class="spinner">
             <svg class="spinner-icon">
@@ -73,13 +83,13 @@
             </svg>
           </div> -->
 
-          <!-- <div class="error">
+          <!-- <div class="errmessage">
             <div>
               <svg class="error-icon">
-                <use xlink:href="./src/img/sprite.svg#icon-spinner3"></use>
+                <use xlink:href="./src/img/sprite.svg#icon-warning"></use>
               </svg>
             </div>
-            <p>No restaurants found. Please try again!</p>
+            <p>Please search again!</p>
           </div> -->
 
           <!-- <li class="restaurant">
@@ -107,6 +117,12 @@
                   </svg>
                   <span>4.5</span>
                 </div>
+              </div>
+              
+              <div class="restaurant__bookmark">
+                <svg class="bookmarked-icon checked">
+                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                </svg>
               </div>
             </a>
           </li>
@@ -136,6 +152,11 @@
                   <span>4.5</span>
                 </div>
               </div>
+              <div class="restaurant__bookmark">
+                <svg class="bookmarked-icon">
+                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                </svg>
+              </div>
             </a>
           </li>
           <li class="restaurant restaurant-3">
@@ -163,6 +184,11 @@
                   </svg>
                   <span>4.5</span>
                 </div>
+              </div>
+              <div class="restaurant__bookmark">
+                <svg class="bookmarked-icon">
+                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                </svg>
               </div>
             </a>
           </li>
@@ -192,6 +218,11 @@
                   <span>4.5</span>
                 </div>
               </div>
+              <div class="restaurant__bookmark">
+                <svg class="bookmarked-icon">
+                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                </svg>
+              </div>
             </a>
           </li>
           <li class="restaurant restaurant-5">
@@ -219,6 +250,11 @@
                   </svg>
                   <span>4.5</span>
                 </div>
+              </div>
+              <div class="restaurant__bookmark">
+                <svg class="bookmarked-icon">
+                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                </svg>
               </div>
             </a>
           </li> -->
@@ -250,7 +286,18 @@
 
       <div class="bookmarks">
         <ul class="bookmarks__restaurant">
-          <li class="bookmarks__list">
+          <!-- <div class="message">
+            <div>
+              <svg class="message-icon">
+                <use xlink:href="./src/img/sprite.svg#icon-emoji-happy"></use>
+              </svg>
+            </div>
+            <p>
+              No bookmarks yet. Find your favourite restaurant and bookmark it!
+            </p>
+          </div> -->
+
+          <!-- <li class="bookmarks__list">
             <a href="#" class="bookmarks__link">
               <figure class="bookmarks__hero">
                 <img
@@ -259,21 +306,35 @@
                   class="bookmarks__img"
                 />
               </figure>
-              <div class="bookmarks__name">TEST</div>
+              <div class="bookmarks__name">
+                <p>TESTTESTTESTTESTTESTaaaaaaaa</p>
+              </div>
             </a>
           </li>
           <li class="">
             <a href="#" class="bookmarks__link">
               <figure class="bookmarks__hero">
                 <img
-                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                  src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
                   alt=""
                   class="bookmarks__img"
                 />
               </figure>
-              <div class="bookmarks__name">TEST</div>
+              <div class="bookmarks__name"><p>TESTTESTTESTTESTTEST</p></div>
             </a>
           </li>
+          <li class="">
+            <a href="#" class="bookmarks__link">
+              <figure class="bookmarks__hero">
+                <img
+                  src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                  alt=""
+                  class="bookmarks__img"
+                />
+              </figure>
+              <div class="bookmarks__name"><p>TESTTESTTESTTESTTEST</p></div>
+            </a>
+          </li> -->
         </ul>
       </div>
 
@@ -289,8 +350,8 @@
           </figure>
           <div class="detail__title">
             <h3 class="name">Restaurant Pizza</h3>
-            <button class="bookmark">
-              <svg class="bookmark-icon">
+            <button class="detail__bookmark">
+              <svg class="detail__bookmark-icon">
                 <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
               </svg>
             </button>

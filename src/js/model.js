@@ -1,7 +1,11 @@
 import { async } from 'regenerator-runtime'; // this was supposed to be created automatically by Parcel, but it wasn't, so I did.
 import { AJAX } from './helper.js';
-import { URL, RESULTS_PAGE } from './config.js';
+import { RESULTS_PAGE } from './config.js';
 import { rest } from 'lodash';
+
+require('dotenv').config();
+
+const URL = process.env.URL;
 
 export const state = {
   search: {
@@ -10,11 +14,10 @@ export const state = {
     // lat,
     // long,
     page: 1,
-    resultsPerPage: RESULTS_PAGE, // 5
+    resultsPerPage: RESULTS_PAGE, // 7
     // allPage
   },
-  restaurant: {}, // {id, image, name, category, address, openingHours, phone, rating, lat, long}
-  review: {}, // {text, image, name, date}
+  restaurant: {}, // {id, image, name, category, address, openingHours, phone, rating, lat, long, bookmarked, review: {text, image, name, date}}
   bookmarks: [],
 };
 
@@ -39,6 +42,10 @@ export const loadSearchResults = async function (query, limit = 50) {
   try {
     state.search.query = query;
 
+    // ''
+    // console.log(typeof query);
+    // console.log(query.split());
+
     const data = await AJAX(
       `${URL}search?term=${query}&latitude=${state.search.lat}&longitude=${state.search.long}&limit=${limit}`
     );
@@ -60,19 +67,41 @@ export const loadSearchResults = async function (query, limit = 50) {
   }
 };
 
+const createOpeningHours = function (str) {
+  if (str === '0000') str = '2400';
+  str.padStart(4, '0');
+
+  const arr = [];
+  for (let i = 0; i < str.length; i++) {
+    arr.push(str[i]);
+  }
+
+  arr.splice(2, 0, ' : ');
+  return arr.join('');
+};
+
 const createRestaurantObject = function (data) {
+  const hours = function () {
+    if (data.hours)
+      return [
+        createOpeningHours(data.hours[0].open[0].start),
+        createOpeningHours(data.hours[0].open[0].end),
+      ];
+    else return;
+  };
+
   return {
     id: data.id,
     image: data.image_url,
     name: data.name,
     category: data.categories[0].title,
     address: data.location.address1,
-    // Have to rethink about this state
-    openingHours: [data.hours[0].open[0].start, data.hours[0].open[0].end],
+    openingHours: hours(), // ["1100", "2000"]
     phone: data.display_phone,
     rating: data.rating,
     lat: data.coordinates.latitude,
     long: data.coordinates.longitude,
+    bookmarked: false,
   };
 };
 
@@ -99,8 +128,8 @@ const createReviewObject = function (data) {
 export const loadReview = async function (id) {
   try {
     const data = await AJAX(`${URL}${id}/reviews`);
-    state.review = createReviewObject(data.reviews[0]);
-    console.log(state.review);
+    state.restaurant.review = createReviewObject(data.reviews[0]);
+    // console.log(state.review);
   } catch (err) {
     console.error(err);
     throw err;
@@ -124,16 +153,37 @@ export const getAllPage = function () {
       state.search.businesses.length / state.search.resultsPerPage;
   else
     state.search.allPage =
-      state.search.businesses.length / state.search.resultsPerPage + 1;
+      Math.floor(state.search.businesses.length / state.search.resultsPerPage) +
+      1;
 };
 
-const persistBookmarks = function () {};
+const persistBookmarks = function () {
+  localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
+};
 
 export const addBookmarks = function (data) {
+  state.restaurant.bookmarked = true;
   state.bookmarks.push(data);
+  persistBookmarks();
 };
 
-export const resetBookmarks = function () {
+export const deleteBookmarks = function (data) {
+  state.restaurant.bookmarked = false;
+  const id = data.id;
+  const index = state.bookmarks.findIndex((restaurant) => restaurant.id === id);
+  state.bookmarks.splice(index, 1);
+  persistBookmarks();
+};
+
+const getLocalStorage = function () {
+  const data = localStorage.getItem('bookmarks');
+  if (!data) return;
+  state.bookmarks = JSON.parse(data);
+};
+getLocalStorage();
+
+const resetBookmarks = function () {
   localStorage.removeItem('bookmarks');
   location.reload();
 };
+// resetBookmarks();

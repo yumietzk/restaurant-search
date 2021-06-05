@@ -9,6 +9,11 @@
 html {
   font-size: 62.5%; // 1rem = 10px;
   box-sizing: border-box;
+
+  @media only screen and (max-width: $bp-large) {
+    // 1rem = 8px
+    font-size: 50%;
+  }
 }
 
 body {

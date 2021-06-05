@@ -2,22 +2,46 @@
   // background-color: orchid;
   flex: 0 0 20%;
 
+  @media only screen and (max-width: $bp-smallest) {
+    // margin-bottom: -1rem;
+  }
+
   &--1,
   &--2 {
     display: block;
     color: var(--color-accent-1);
     font-size: 6rem;
     font-family: Pattaya, sans-serif;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 5rem;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
+      display: inline-block;
+      font-size: 4rem;
+    }
   }
 
   &--1 {
     text-align: left;
     margin-left: 2rem;
+
+    @media only screen and (max-width: $bp-smallest) {
+      // text-align: center;
+      margin-left: 0;
+      margin-right: 1rem;
+    }
   }
 
   &--2 {
     text-align: right;
     margin-right: -2rem;
+
+    @media only screen and (max-width: $bp-smallest) {
+      // text-align: center;
+      margin-right: 0;
+    }
   }
 }
 
@@ -29,28 +53,76 @@
 
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   // margin-right: 2rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    margin-bottom: 5rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    margin-bottom: 6rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    margin-bottom: 0;
+    align-self: center;
+    justify-content: center;
+    width: 70%;
+    margin-top: -3rem;
+  }
+
   &__input {
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-family: inherit;
     color: inherit;
     border: none;
     padding: 1rem 2rem;
     border-radius: 100px;
-    width: 30%;
-    margin-right: -4rem;
+    width: 40%;
+    margin-right: -3rem;
     background-color: var(--color-gray-light-2);
     transition: all 0.2s;
 
+    @media only screen and (max-width: $bp-medium) {
+      width: 50%;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      padding: 0.8rem 1.8rem;
+      width: 60%;
+      font-size: 1.3rem;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
+      width: 70%;
+    }
+
     &::-webkit-input-placeholder {
+      font-size: 1.1rem;
       font-weight: 300;
       color: var(--color-gray-dark-2);
+
+      @media only screen and (max-width: $bp-small) {
+        font-size: 1rem;
+      }
     }
 
     &:focus {
       outline: none;
-      width: 40%;
+      width: 50%;
+
+      @media only screen and (max-width: $bp-medium) {
+        width: 60%;
+      }
+
+      @media only screen and (max-width: $bp-small) {
+        width: 70%;
+      }
+
+      @media only screen and (max-width: $bp-smallest) {
+        width: 80%;
+      }
     }
   }
 
@@ -59,12 +131,18 @@
     background-color: var(--color-gray-light-2);
     transition: all 0.2s;
 
+    &:hover {
+      .search__icon {
+        fill: var(--color-accent-3);
+      }
+    }
+
     &:focus {
       outline: none;
     }
 
     &:active {
-      transform: translateY(1px);
+      transform: scale(0.9);
     }
   }
 
@@ -77,23 +155,36 @@
 
 .header__user-box {
   // background-color: blue;
-  flex: 0 0 17rem;
+  // flex: 0 0 17rem;
+  flex: 0 0 10%;
   align-self: flex-end;
-  margin-bottom: 2rem;
+  margin-bottom: 2.9rem;
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 
-  margin-right: 2rem;
+  // margin-right: 2rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    margin-left: 1rem;
+    margin-bottom: 4.8rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    margin-bottom: 5.7rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    margin-bottom: 0;
+  }
 
   .bookmark {
-    &:link,
-    &:visited {
-      margin-right: 1rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
+    margin-right: 3.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    background-color: transparent;
 
     &:hover {
       .bookmark-icon {
@@ -110,18 +201,32 @@
     }
 
     .bookmark-icon {
-      height: 3rem;
-      width: 3rem;
+      height: 3.5rem;
+      width: 3.5rem;
       fill: var(--color-gray-light-2);
       transition: all 0.2s;
+
+      @media only screen and (max-width: $bp-small) {
+        height: 3rem;
+        width: 3rem;
+      }
+
+      @media only screen and (max-width: $bp-smallest) {
+        height: 3.5rem;
+        width: 3.5rem;
+      }
+    }
+
+    .clicked {
+      fill: var(--color-accent-3);
     }
   }
 
-  .user {
-    &__icon {
-      height: 5rem;
-      width: 5rem;
-      border-radius: 50%;
-    }
-  }
+  // .user {
+  //   &__icon {
+  //     height: 5rem;
+  //     width: 5rem;
+  //     border-radius: 50%;
+  //   }
+  // }
 }

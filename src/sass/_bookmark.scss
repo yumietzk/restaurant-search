@@ -3,30 +3,87 @@
   top: 25rem;
   right: 0;
 
-  background-color: orangered;
+  background-color: transparent;
   z-index: 20;
+  padding: 0.7rem;
+  width: 30rem;
+  // border: 2px solid var(--color-gray-light-4);
+
+  @media only screen and (max-width: $bp-small) {
+    width: 25rem;
+  }
 
   &__restaurant {
     list-style: none;
+
     display: flex;
     flex-direction: column;
+    // align-items: flex-end;
+    justify-content: center;
+
+    .message {
+      font-size: 1.3rem;
+      padding: 2rem;
+
+      .message-icon {
+        height: 2.2rem;
+        width: 2.2rem;
+      }
+    }
   }
 
-  &__list {
-    display: flex;
-    overflow: hidden;
+  &__list:not(:last-of-type) {
+    margin-bottom: 0.5rem;
+  }
+
+  &__link:link,
+  &__link:visited {
+    // display: flex;
+    text-decoration: none;
+    // position: relative;
   }
 
   &__hero {
-    flex: 0 1 45%;
+    // flex: 0 1 45%;
+    width: 80%;
+    height: 12rem;
+    // margin-left: auto;
+    // margin-right: 2rem;
+    margin: 0 auto;
+    border-radius: 1.5rem;
+    overflow: hidden;
   }
 
   &__img {
     display: block;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    // clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   }
 
   &__name {
-    flex: 1;
+    // flex: 1;
+    background-color: var(--color-accent-3);
+    font-size: 1.5rem;
+    width: 70%;
+    padding: 0.5rem 1rem;
+    // margin-left: auto;
+    transform: skewX(-20deg);
+    position: relative;
+    top: -1.3rem;
+    left: 7rem;
+    text-align: center;
+    // box-decoration-break: clone;
+    overflow-wrap: break-word;
+
+    p {
+      transform: skewX(20deg);
+      color: var(--color-white);
+    }
   }
+}
+
+.active {
+  background-color: var(--color-orange-light-3);
 }

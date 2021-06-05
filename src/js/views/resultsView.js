@@ -5,6 +5,8 @@ class ResultsView {
   _errorMessage = 'Please search again!';
   _data;
 
+  updateBookmarkChecked(id) {}
+
   renderResults(data) {
     // document.querySelector('.search-message').classList.add('hidden');
 
@@ -25,8 +27,8 @@ class ResultsView {
         <a href="#${data.id}" class="restaurant__link">
           <figure class="restaurant__hero">
             <img
-              src=${data.image}
-              alt=""
+              src="${data.image}"
+              alt="Restaurant Image"
               class="restaurant__img"
             />
           </figure>
@@ -86,7 +88,7 @@ class ResultsView {
 
   renderError(message = this._errorMessage) {
     const markup = `
-        <div class="error">
+        <div class="errmessage">
           <div>
             <svg class="error-icon">
               <use xlink:href="${icons}#icon-warning"></use>
@@ -98,6 +100,42 @@ class ResultsView {
     this._parentEl.innerHTML = '';
     document.querySelector('.pagination').innerHTML = '';
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  hideMessage() {
+    const target = this._parentEl.querySelector('.message');
+    // console.log(target);
+    if (!target) return;
+
+    target.classList.add('hidden');
+  }
+
+  addMessage() {
+    // const target = this._parentEl.querySelector('.message');
+    // console.log(target); // null
+    // // if (!target) return;
+
+    // target.classList.remove('hidden');
+
+    const markup = this.generateMessage();
+    this._parentEl.innerHTML = '';
+    this._parentEl.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  generateMessage() {
+    return `
+        <div class="message">
+          <div>
+            <svg class="message-icon">
+              <use xlink:href="${icons}#icon-spoon-knife"></use>
+            </svg>
+          </div>
+          <p>
+            Search what you want to eat, and find out your favourite
+            restaurant near you!
+          </p>
+        </div>
+      `;
   }
 }
 
