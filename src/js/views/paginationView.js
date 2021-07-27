@@ -9,7 +9,6 @@ class PaginationView {
       if (!btn) return;
 
       const goToPage = +btn.dataset.btn;
-      // console.log(goToPage);
 
       handler(goToPage);
     });
@@ -71,7 +70,6 @@ class PaginationView {
         `;
     }
 
-    // If there's only one page
     return '';
   }
 }

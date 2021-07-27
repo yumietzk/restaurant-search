@@ -14,27 +14,15 @@ class BookmarksView {
   }
 
   addHandlerBookmarksRestaurant(handler) {
-    // this._parentEl.addEventListener('click', function (e) {
-    //   if (!e.target.closest('.bookmarks__link')) return;
-
-    //   handler();
-    // });
-
     window.addEventListener('hashchange', function () {
       const id = window.location.hash;
-      // console.log(id);
-      // console.log(id.slice(1));
 
-      // To avoid when clicked a close button on detail
       if (!id.slice(1)) return;
       handler();
     });
   }
 
   updateBookmarkIcon() {
-    // console.log(
-    //   document.querySelector('.bookmark-icon').classList.contains('clicked')
-    // );
     document.querySelector('.bookmark-icon').classList.toggle('clicked');
   }
 
@@ -48,8 +36,6 @@ class BookmarksView {
     const clicked = document
       .querySelector('.bookmark-icon')
       .classList.contains('clicked');
-
-    // console.log(clicked);
 
     if (clicked) {
       this._parentEl.innerHTML = '';
@@ -73,7 +59,7 @@ class BookmarksView {
   }
 
   renderBookmarks(data) {
-    this._data = data; // bookmarks[ ]
+    this._data = data;
     const markup = this._data
       .map((bookmark) => this.generateMarkup(bookmark))
       .join('');
@@ -81,8 +67,6 @@ class BookmarksView {
     const clicked = document
       .querySelector('.bookmark-icon')
       .classList.contains('clicked');
-
-    // console.log(clicked);
 
     if (clicked) {
       this._parentEl.innerHTML = '';

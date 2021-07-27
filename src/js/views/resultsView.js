@@ -5,14 +5,10 @@ class ResultsView {
   _errorMessage = 'Please search again!';
   _data;
 
-  updateBookmarkChecked(id) {}
+  // updateBookmarkChecked(id) {}
 
   renderResults(data) {
-    // document.querySelector('.search-message').classList.add('hidden');
-
-    // data = state.search.businesses = [{...}, ]
     this._data = data;
-    // console.log(this._data);
     const markup = this._data
       .map((business) => this.generateMarkup(business))
       .join('');
@@ -59,8 +55,6 @@ class ResultsView {
 
     this._parentEl.nextElementSibling.innerHTML = '';
     this._parentEl.nextElementSibling.insertAdjacentHTML('afterbegin', markup);
-    // document.querySelector('.page').innerHTML = '';
-    // document.querySelector('.page').insertAdjacentHTML('afterbegin', markup);
   }
 
   generatePageMarkup(page, allPage) {
@@ -104,19 +98,12 @@ class ResultsView {
 
   hideMessage() {
     const target = this._parentEl.querySelector('.message');
-    // console.log(target);
     if (!target) return;
 
     target.classList.add('hidden');
   }
 
   addMessage() {
-    // const target = this._parentEl.querySelector('.message');
-    // console.log(target); // null
-    // // if (!target) return;
-
-    // target.classList.remove('hidden');
-
     const markup = this.generateMessage();
     this._parentEl.innerHTML = '';
     this._parentEl.insertAdjacentHTML('afterbegin', markup);

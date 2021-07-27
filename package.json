@@ -5,11 +5,13 @@
   "default": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html -d ./dist"
   },
   "author": "Yumie",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.3.1",
     "parcel-bundler": "^1.12.5",
     "sass": "^1.34.0"
   },

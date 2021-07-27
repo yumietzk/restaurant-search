@@ -1,7 +1,6 @@
 import { async } from 'regenerator-runtime'; // this was supposed to be created automatically by Parcel, but it wasn't, so I did.
 import { AJAX } from './helper.js';
 import { RESULTS_PAGE } from './config.js';
-import { rest } from 'lodash';
 
 require('dotenv').config();
 

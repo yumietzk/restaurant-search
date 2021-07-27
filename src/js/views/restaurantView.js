@@ -10,23 +10,9 @@ class RestaurantView {
   map;
 
   addHandlerRestaurant(handler) {
-    // ['hashchange', 'load'].forEach((ev) => {
-    //   window.addEventListener(ev, function () {
-    //     const id = window.location.hash;
-    //     // console.log(id);
-    //     // console.log(id.slice(1));
-
-    //     // To avoid when clicked a close button on detail
-    //     if (!id.slice(1)) return;
-    //     handler();
-    //   });
-    // });
     window.addEventListener('hashchange', function () {
       const id = window.location.hash;
-      // console.log(id);
-      // console.log(id.slice(1));
 
-      // To avoid when clicked a close button on detail
       if (!id.slice(1)) return;
       handler();
     });
@@ -35,7 +21,6 @@ class RestaurantView {
   addHandlerAddBookmarks(handler) {
     this._parentEl.addEventListener('click', function (e) {
       if (!e.target.closest('.detail__bookmark-icon')) return;
-      // console.log(e.target);
       handler();
     });
   }
@@ -67,8 +52,6 @@ class RestaurantView {
   }
 
   renderMap(lat, long) {
-    // Render the map based on the tiles <- This happens after choosing a restaurant.
-
     if (this.map) this.map.remove();
 
     const coords = [lat, long];
@@ -87,13 +70,12 @@ class RestaurantView {
       }
     ).addTo(this.map);
 
-    // Add marker
     let marker = L.marker(coords).addTo(this.map);
     marker.bindPopup('Here!').openPopup();
   }
 
   renderDetail(data) {
-    this._data = data; // {}
+    this._data = data;
     const markup = this.generateMarkup(this._data);
 
     this._parentEl.innerHTML = '';
