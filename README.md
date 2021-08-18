@@ -1,4 +1,4 @@
-# restaurant-search
+# Restaurant Search
 
 A simple restaurant search app created with HTML, CSS and Vanilla JavaScript.
 
