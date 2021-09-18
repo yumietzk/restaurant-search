@@ -81,17 +81,28 @@ class ResultsView {
   renderError(message = this._errorMessage) {
     const markup = `
         <div class="errmessage">
-          <div>
-            <svg class="error-icon">
-              <use xlink:href="${icons}#icon-warning"></use>
-            </svg>
+          <div class="message">
+            <div>
+              <svg class="error-icon">
+                <use xlink:href="${icons}#icon-warning"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
           </div>
-          <p>${message}</p>
+          <button class="back-btn">Back to Top</button>
         </div>
       `;
+
     this._parentEl.innerHTML = '';
     document.querySelector('.pagination').innerHTML = '';
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  addHandlerBack(handler) {
+    this._parentEl.addEventListener('click', function (e) {
+      if (!e.target.closest('.back-btn')) return;
+      handler();
+    });
   }
 
   hideMessage() {

@@ -14,19 +14,26 @@ const controlSearchResults = async function () {
 
     resultsView.renderSpinner();
 
+    // Get user's position
     await model.getCurrentPosition();
 
+    // Get search term
     const query = searchView.getQuery();
     if (!query) return resultsView.renderError();
 
+    // Search by the query
     await model.loadSearchResults(query);
     if (!model.state.search.businesses[0]) return resultsView.renderError();
 
+    // Get data by page
     const data = model.getResultsPerPage();
+    // Calculate number of pages
     model.getAllPage();
 
+    // Render search results by page
     resultsView.renderResults(data);
 
+    // Render pagination on page
     paginationView.render(model.state.search.page, model.state.search.allPage);
 
     resultsView.renderPageBottom(
@@ -34,8 +41,8 @@ const controlSearchResults = async function () {
       model.state.search.allPage
     );
   } catch (err) {
-    resultsView.renderError();
     console.error(err);
+    resultsView.renderError();
   }
 };
 
@@ -55,14 +62,18 @@ const controlRestaurant = async function () {
   try {
     resultsView.renderSpinner();
 
+    // Get a restaurant id
     const id = window.location.hash.slice(1);
 
+    // Search by the restaurant id
     await model.loadRestaurant(id);
 
+    // Search review by the restaurant id
     await model.loadReview(id);
 
     restaurantView.removeHiddenClass();
 
+    // Render the restaurant detail
     restaurantView.renderDetail(model.state.restaurant);
 
     model.state.bookmarks.forEach((b) => {
@@ -72,13 +83,20 @@ const controlRestaurant = async function () {
 
     if (model.state.restaurant.bookmarked) restaurantView.renderBookmarked();
 
+    // Render the restaurant place on map
     restaurantView.renderMap(
       model.state.restaurant.lat,
       model.state.restaurant.long
     );
   } catch (err) {
     console.error(err);
+    resultsView.renderError(err);
   }
+};
+
+const controlBackPage = function () {
+  window.history.back(-1);
+  resultsView.addMessage();
 };
 
 const controlCloseDetail = async function () {
@@ -90,8 +108,10 @@ const controlCloseDetail = async function () {
     } else {
       resultsView.renderSpinner();
 
+      // Get data by page
       const data = model.getResultsPerPage(model.state.search.page);
 
+      // Render search results by page
       resultsView.renderResults(data);
 
       paginationView.render(
@@ -149,6 +169,7 @@ const controlBookmarksRestaurant = function () {
 const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerPagination(controlPagination);
+  resultsView.addHandlerBack(controlBackPage);
   restaurantView.addHandlerRestaurant(controlRestaurant);
   restaurantView.addHandlerClose(controlCloseDetail);
   restaurantView.addHandlerAddBookmarks(controlAddBookmarks);

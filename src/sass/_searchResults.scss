@@ -279,8 +279,7 @@
   }
 }
 
-.message,
-.errmessage {
+.message {
   display: flex;
   align-items: center;
   font-size: 2rem;
@@ -291,5 +290,24 @@
     width: 3rem;
     fill: var(--color-accent-3);
     margin-right: 1rem;
+  }
+}
+
+.errmessage {
+  display: flex;
+  flex-direction: column;
+}
+
+.back-btn {
+  border: none;
+  padding: 0.7rem 1rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+  background-color: rgb(221, 221, 221);
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: rgb(197, 197, 197);
   }
 }

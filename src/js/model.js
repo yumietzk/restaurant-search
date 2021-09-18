@@ -24,10 +24,8 @@ export const getCurrentPosition = function () {
   return new Promise(function (resolve, reject) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        // console.log(position);
         const { latitude } = position.coords;
         const { longitude } = position.coords;
-        // console.log(latitude, longitude);
 
         state.search.lat = latitude;
         state.search.long = longitude;
@@ -44,14 +42,18 @@ export const loadSearchResults = async function (query, limit = 50) {
     const data = await AJAX(
       `${URL}search?term=${query}&latitude=${state.search.lat}&longitude=${state.search.long}&limit=${limit}`
     );
+    console.log(data.businesses);
+
+    if (!data.businesses) throw new Error('Please search again!');
+    if (data.businesses === 0) throw new Error('No data yet.');
 
     state.search.businesses = data.businesses.map((data) => {
       return {
-        id: data.id,
-        name: data.name,
-        location: data.location.address1,
-        rating: data.rating,
-        image: data.image_url,
+        id: data?.id,
+        name: data?.name,
+        location: data?.location.address1,
+        rating: data?.rating,
+        image: data?.image_url,
       };
     });
   } catch (err) {
@@ -75,25 +77,25 @@ const createOpeningHours = function (str) {
 
 const createRestaurantObject = function (data) {
   const hours = function () {
-    if (data.hours)
+    if (data?.hours)
       return [
-        createOpeningHours(data.hours[0].open[0].start),
-        createOpeningHours(data.hours[0].open[0].end),
+        createOpeningHours(data?.hours[0]?.open[0]?.start),
+        createOpeningHours(data?.hours[0]?.open[0]?.end),
       ];
     else return;
   };
 
   return {
-    id: data.id,
-    image: data.image_url,
-    name: data.name,
-    category: data.categories[0].title,
-    address: data.location.address1,
+    id: data?.id,
+    image: data?.image_url,
+    name: data?.name,
+    category: data?.categories[0].title,
+    address: data?.location.address1,
     openingHours: hours(),
-    phone: data.display_phone,
-    rating: data.rating,
-    lat: data.coordinates.latitude,
-    long: data.coordinates.longitude,
+    phone: data?.display_phone,
+    rating: data?.rating,
+    lat: data?.coordinates.latitude,
+    long: data?.coordinates.longitude,
     bookmarked: false,
   };
 };
@@ -102,6 +104,7 @@ export const loadRestaurant = async function (id) {
   try {
     const data = await AJAX(`${URL}${id}`);
     console.log(data);
+    if (!data) throw new Error('Could not get the restaurant detail.');
     state.restaurant = createRestaurantObject(data);
   } catch (err) {
     console.error(err);
@@ -111,17 +114,20 @@ export const loadRestaurant = async function (id) {
 
 const createReviewObject = function (data) {
   return {
-    text: data.text,
-    image: data.user.image_url,
-    name: data.user.name,
-    date: data.time_created.split(' ').slice(0, 1).join(''),
+    text: data?.text,
+    image: data?.user?.image_url,
+    name: data?.user?.name,
+    date: data?.time_created?.split(' ').slice(0, 1).join(''),
   };
 };
 
 export const loadReview = async function (id) {
   try {
     const data = await AJAX(`${URL}${id}/reviews`);
-    state.restaurant.review = createReviewObject(data.reviews[0]);
+    console.log(data);
+    if (!data.reviews || data.reviews.length === 0)
+      throw new Error('Could not get the restaurant detail.');
+    state.restaurant.review = createReviewObject(data?.reviews[0]);
   } catch (err) {
     console.error(err);
     throw err;
