@@ -13,6 +13,7 @@ const requestOptions = {
 
 export const AJAX = async function (url) {
   try {
+    console.log(key);
     const res = await fetch(url, requestOptions);
     console.log(res);
     if (!res.ok) throw new Error('Please search again!');
