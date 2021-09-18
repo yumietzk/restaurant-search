@@ -1,4 +1,4 @@
-import { async } from 'regenerator-runtime'; // this was supposed to be created automatically by Parcel, but it wasn't, so I did.
+import { async } from 'regenerator-runtime';
 import { AJAX } from './helper.js';
 import { RESULTS_PAGE } from './config.js';
 
@@ -41,14 +41,9 @@ export const loadSearchResults = async function (query, limit = 50) {
   try {
     state.search.query = query;
 
-    // ''
-    // console.log(typeof query);
-    // console.log(query.split());
-
     const data = await AJAX(
       `${URL}search?term=${query}&latitude=${state.search.lat}&longitude=${state.search.long}&limit=${limit}`
     );
-    // console.log(data.businesses);
 
     state.search.businesses = data.businesses.map((data) => {
       return {
@@ -59,7 +54,6 @@ export const loadSearchResults = async function (query, limit = 50) {
         image: data.image_url,
       };
     });
-    // console.log(state.search.businesses);
   } catch (err) {
     console.error(`💥💥💥 ${err}`);
     throw err;
@@ -95,7 +89,7 @@ const createRestaurantObject = function (data) {
     name: data.name,
     category: data.categories[0].title,
     address: data.location.address1,
-    openingHours: hours(), // ["1100", "2000"]
+    openingHours: hours(),
     phone: data.display_phone,
     rating: data.rating,
     lat: data.coordinates.latitude,
@@ -128,7 +122,6 @@ export const loadReview = async function (id) {
   try {
     const data = await AJAX(`${URL}${id}/reviews`);
     state.restaurant.review = createReviewObject(data.reviews[0]);
-    // console.log(state.review);
   } catch (err) {
     console.error(err);
     throw err;

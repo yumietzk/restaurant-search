@@ -5,8 +5,6 @@ class ResultsView {
   _errorMessage = 'Please search again!';
   _data;
 
-  // updateBookmarkChecked(id) {}
-
   renderResults(data) {
     this._data = data;
     const markup = this._data
