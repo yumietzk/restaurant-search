@@ -4,7 +4,7 @@ import { RESULTS_PAGE } from './config.js';
 
 require('dotenv').config();
 
-const URL = process.env.URL;
+const URL = process.env.CORS_URL;
 
 export const state = {
   search: {
