@@ -38,9 +38,6 @@ export const getCurrentPosition = function () {
 export const loadSearchResults = async function (query, limit = 50) {
   try {
     state.search.query = query;
-    console.log(
-      `${URL}search?term=${query}&latitude=${state.search.lat}&longitude=${state.search.long}&limit=${limit}`
-    );
 
     const data = await AJAX(
       `${URL}search?term=${query}&latitude=${state.search.lat}&longitude=${state.search.long}&limit=${limit}`
