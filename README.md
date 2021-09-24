@@ -3,4 +3,7 @@
 View Demo here: https://restaurant-search-myapp.netlify.app
 
 
-<img width="1438" alt="Restaurant" src="https://user-images.githubusercontent.com/61277579/134711845-2bae9c75-f49b-415d-8d76-cab2a4850c34.png">
+![Restaurant](https://user-images.githubusercontent.com/61277579/134712783-7522165b-ce90-47a0-84be-e089069ee27f.jpeg)
+
+
+A restaurant search application created with HTML, CSS and Vanilla JavaScript. Used Yelp Fusion API to fetch data. This project uses MVC pattern.
