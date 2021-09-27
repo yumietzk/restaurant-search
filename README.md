@@ -6,7 +6,7 @@
 ![Restaurant Search screen shot](https://user-images.githubusercontent.com/61277579/134940284-5cc46c38-681b-4369-bc41-2035d518dc72.png)
 
 
-A restaurant search application created with HTML, CSS and Vanilla JavaScript.  
+A restaurant search application built with HTML, CSS and Vanilla JavaScript.  
 It fetches data from [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3/get_started) and gets users current position using Geolocation API. Users can search restaurants near them and see restaurants' detail which is from opening hours to the location on map, and they also can save restaurants on bookmark. Data on bookmark is stored on localstorage.  
 I used the MVC pattern to organize my code of this project. 
 
