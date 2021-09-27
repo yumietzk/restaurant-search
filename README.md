@@ -30,7 +30,7 @@ Install npm.
   ```
 
 ### Installation
-1. Get a free API key at [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3/get_started).
+1. Get an API key at [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3/get_started).
 2. Clone the repo.
     ```
     git clone https://github.com/yumietzk/restaurant-search.git
