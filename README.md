@@ -3,12 +3,12 @@
 [View Demo here](https://restaurant-search-myapp.netlify.app)
 
 
-![Restaurant Search Screen Shot](https://user-images.githubusercontent.com/61277579/134712783-7522165b-ce90-47a0-84be-e089069ee27f.jpeg)
+![Restaurant Search screen shot](https://user-images.githubusercontent.com/61277579/134940284-5cc46c38-681b-4369-bc41-2035d518dc72.png)
 
 
 A restaurant search application created with HTML, CSS and Vanilla JavaScript.  
-It fetches data from Yelp Fusion API and users current position using Geolocation API, so users can search restaurants near them. Users also can see restaurant's detail which is from opening hours to the location on map, and if they like it they can save the restaurant on bookmark which stores data on localstorage.  
-This project uses MVC pattern.
+It fetches data from Yelp Fusion API and gets users current position using Geolocation API. Users can search restaurants near them and see restaurants' detail which is from opening hours to the location on map, and they also can save restaurants on bookmark. Data on bookmark is stored on localstorage.  
+I used the MVC pattern to organize my code of this project. 
 
 
 ## Built With
@@ -22,7 +22,7 @@ This project uses MVC pattern.
 
 ### Prerequisites
 
-Install npm 
+Install npm. 
 
 - npm
   ```
@@ -32,22 +32,25 @@ Install npm
 ### Installation
 1. Get a free API key at [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3/get_started).
 2. Clone the repo.
-  ```
-  git clone 
-  ```
+    ```
+    git clone https://github.com/yumietzk/restaurant-search.git
+    ```
 3. Install NPM packages.
-  ```
-  npm install
-  ```
+    ```
+    npm install
+    ```
 4. Create your API key and proxy in a .env file.
-  ```
-  API_KEY=yourapi
-  PROXY=https://cors-anywhere.herokuapp.com/
-  ```
-5. Run the server in development.
-  ```
-  npm run start
-  ```
-  
+    ```
+    API_KEY=yourapikey
+    CORS_URL=https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/
+    ```
+5. Start the server.
+    ```
+    npm run start
+    ```
 
-## Upcoming Features
+
+## Contact
+
+Yumie Tsuzuki - yumie.tsuzuki@gmail.com
+
