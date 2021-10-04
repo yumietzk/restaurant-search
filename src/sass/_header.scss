@@ -1,10 +1,6 @@
 .header__logo {
-  // background-color: orchid;
   flex: 0 0 20%;
-
-  @media only screen and (max-width: $bp-smallest) {
-    // margin-bottom: -1rem;
-  }
+  max-width: 35rem;
 
   &--1,
   &--2 {
@@ -19,7 +15,7 @@
 
     @media only screen and (max-width: $bp-smallest) {
       display: inline-block;
-      font-size: 4rem;
+      font-size: 3.5rem;
     }
   }
 
@@ -28,7 +24,6 @@
     margin-left: 2rem;
 
     @media only screen and (max-width: $bp-smallest) {
-      // text-align: center;
       margin-left: 0;
       margin-right: 1rem;
     }
@@ -39,14 +34,12 @@
     margin-right: -2rem;
 
     @media only screen and (max-width: $bp-smallest) {
-      // text-align: center;
       margin-right: 0;
     }
   }
 }
 
 .search {
-  // background-color: orangered;
   flex: 1;
   align-self: flex-end;
   margin-bottom: 3rem;
@@ -54,7 +47,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  // margin-right: 2rem;
 
   @media only screen and (max-width: $bp-medium) {
     margin-bottom: 5rem;
@@ -154,8 +146,6 @@
 }
 
 .header__user-box {
-  // background-color: blue;
-  // flex: 0 0 17rem;
   flex: 0 0 10%;
   align-self: flex-end;
   margin-bottom: 2.9rem;
@@ -163,8 +153,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  // margin-right: 2rem;
 
   @media only screen and (max-width: $bp-medium) {
     margin-left: 1rem;
@@ -221,12 +209,4 @@
       fill: var(--color-accent-3);
     }
   }
-
-  // .user {
-  //   &__icon {
-  //     height: 5rem;
-  //     width: 5rem;
-  //     border-radius: 50%;
-  //   }
-  // }
 }

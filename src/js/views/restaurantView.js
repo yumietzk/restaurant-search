@@ -98,37 +98,37 @@ class RestaurantView {
                 <use xlink:href="${icons}#icon-bookmark"></use>
               </svg>
             </button>
-          <div class="category">${data.category}</div>
+          <div class="category">${data.category || 'No data'}</div>
         </div>
         <div class="detail__address">
           <svg class="address-icon">
             <use xlink:href="${icons}#icon-location-pin"></use>
           </svg>
-          <span>${data.address}</span>
+          <span>${data.address || 'No data'}</span>
         </div>
         <div class="detail__openingHour">
           <svg class="openingHour-icon">
             <use xlink:href="${icons}#icon-clock"></use>
           </svg>
           <span>${
-            data.openingHours ? data.openingHours.join(' ~ ') : '-'
+            data.openingHours ? data.openingHours.join(' ~ ') : '-' || 'No data'
           }</span>
         </div>
         <div class="detail__phone">
           <svg class="phone-icon">
             <use xlink:href="${icons}#icon-phone"></use>
           </svg>
-          <span>${data.phone}</span>
+          <span>${data.phone || 'No data'}</span>
         </div>
         <div class="detail__rating">
           <svg class="rating-icon">
             <use xlink:href="${icons}#icon-star"></use>
           </svg>
-          <span>${data.rating}</span>
+          <span>${data.rating || 'No data'}</span>
         </div>
         <div class="detail__review">
           <div class="user-review">
-            ${data.review.text}
+            ${data.review.text || 'No review'}
           </div>
           <div class="user">
             <img
@@ -137,11 +137,10 @@ class RestaurantView {
               class="user-img"
             />
             <div class="user-detail">
-              <div class="user-name">${data.review.name}</div>
-              <div class="user-date">${data.review.date.replaceAll(
-                '-',
-                '/'
-              )}</div>
+              <div class="user-name">${data.review.name || 'No data'}</div>
+              <div class="user-date">${
+                data.review.date.replaceAll('-', '/') || 'No data'
+              }</div>
             </div>
           </div> 
         </div>
