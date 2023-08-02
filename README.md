@@ -48,9 +48,3 @@ Install npm.
     ```
     npm run start
     ```
-
-
-## Contact
-
-Yumie Tsuzuki - yumie.tsuzuki@gmail.com
-
